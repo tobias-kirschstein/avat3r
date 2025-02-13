@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Avat3r: Large Animatable Gaussian Reconstruction Model for High-fidelity 3D Head Avatars">
+    <meta name="keywords"
+          content="Avat3r, 3D Gaussian Splatting, few-shot 3D head avatars, LRM, GRM, large animatable Gaussian Reconstruction Model">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Avat3r: Large Animatable Gaussian Reconstruction Model for High-fidelity 3D Head Avatars</title>
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+            src="https://code.jquery.com/color/jquery.color-2.2.0.min.js"
+            integrity="sha256-aSe2ZC5QeunlL/w/7PsVKmV+fa0eDbmybn/ptsKHR6I="
+            crossorigin="anonymous"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+<!--    <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>-->
+    <script src="./static/js/interact.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<!-- Title, Authors & Link Capsules -->
+<section class="hero section-title">
+    <!--    <div class="hero-body">-->
+    <div class="container is-max-desktop">
+        <div class="columns is-centered">
+            <div class="column has-text-centered">
+                <h1 class="title is-1 publication-title">
+                    <span class="ours-title">
+                    Avat<span class="logo-stripes">3</span>r
+                    </span>
+                    <br/>Large Animatable Gaussian Reconstruction Model for High-fidelity 3D Head Avatars
+                </h1>
+
+                <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                          <a href="https://tobias-kirschstein.github.io/" target="_blank">Tobias Kirschstein</a><sup>1,2</sup>,</span>
+                    <span class="author-block">
+                          <a href="https://scholar.google.de/citations?user=Wx62iOsAAAAJ&hl=en&oi=sra" target="_blank">Javier Romero</a><sup>2</sup>,
+                        </span>
+                    <span class="author-block">
+                          <a href="https://seva100.github.io/" target="_blank">Artem Sevastopolsky</a><sup>1,2</sup>,
+                        </span>
+                    <span class="author-block">
+                          <a href="https://niessnerlab.org/" target="_blank">Matthias Nie&szlig;ner</a><sup>1</sup>,
+                        </span>
+                    <span class="author-block">
+                          <a href="https://shunsukesaito.github.io/" target="_blank">Shunsuke Saito</a><sup>2</sup>
+                        </span>
+                </div>
+
+                <div class="is-size-5 publication-authors">
+                    <span class="author-block"><sup>1</sup>Technical University of Munich</span>,
+                    <span class="author-block"><sup>2</sup>Meta Reality Labs</span>
+                </div>
+
+                <div class="column has-text-centered">
+                    <div class="publication-links">
+                        <!-- PDF Link. -->
+                        <span class="link-block">  <!-- TODO: Add static pdf paper -->
+                                <a href="static/todo.pdf"
+                                   target="_blank"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                      <i class="fas fa-file-pdf"></i>
+                                  </span>
+                                  <span>Paper</span>
+                                </a>
+                            </span>
+                        <span class="link-block">  <!-- TODO: Add arXiv link -->
+                                <a href=""
+                                   target="_blank"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                      <i class="ai ai-arxiv"></i>
+                                  </span>
+                                  <span>arXiv</span>
+                                </a>
+                            </span>
+                        <!-- Video Link. --> <!-- TODO: Add video link -->
+                        <span class="link-block">
+                                <a href="" target="_blank"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                      <!-- "fas" means fa-brand -->
+                                      <i class="fab fa-youtube"></i>
+                                  </span>
+                                  <span>Video</span>
+                                </a>
+                            </span>
+                        <!-- Code Link. -->
+                        <span class="link-block">
+                                <a href="" target="_blank"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                      <i class="fab fa-github"></i>
+                                  </span>
+                                  <span>Code (coming soon)</span>
+                                  </a>
+                            </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--        </div>-->
+    </div>
+</section>
+
+<section class="hero teaser" id="section-interpolation">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered" style="margin-bottom:0; margin-top: 1px">
+            <div class="column">
+                <p style="margin: 30px 0">
+                    <strong>Avat<span class="logo-stripes">3</span>r</strong> takes <em>4 input images</em> of a person's face and generates an <em>animatable 3D head avatar</em> in a <em>single forward pass</em>.
+                    The resulting 3D head representation can be animated at interactive rates.
+                    The entire creation process of the 3D avatar, from taking 4 smartphone pictures to the final result, can be executed <em>within minutes</em>.
+                </p>
+            </div>
+        </div>
+        <div class="hero-body">
+            <video class="video lazy" id="geo1" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                <source src="static/videos/Website_Teaser_Video_compressed.mp4" type="video/mp4">
+                </source>
+            </video>
+        </div>
+    </div>
+
+</section>
+
+    <!-- Abstract -->
+<section class="section" id="section-abstract">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths is-light">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        Traditionally, creating photo-realistic 3D head avatars requires a studio-level multi-view capture setup and expensive optimization during test-time, limiting the use of digital human doubles to the VFX industry or offline renderings.
+                    </p>
+                    <p>
+                        To address this shortcoming, we present <strong>Avat<span class="logo-stripes">3</span>r</strong>, which regresses a high-quality and animatable 3D head avatar from just a few input images, vastly reducing compute requirements during inference.
+                        More specifically, we make Large Reconstruction Models animatable and learn a powerful prior over 3D human heads from a large multi-view video dataset.
+                        For better 3D head reconstructions, we employ position maps from DUSt3R and generalized feature maps from the human foundation model Sapiens.
+                        To animate the 3D head, our key discovery is that simple cross-attention to an expression code is already sufficient.
+                        Finally, we increase robustness by feeding input images with different expressions to our model during training, enabling the reconstruction of 3D head avatars from inconsistent inputs, e.g., an imperfect phone capture with accidental movement, or frames from a monocular video.
+                    </p>
+                    <p>
+                        We compare <strong>Avat<span class="logo-stripes">3</span>r</strong> with current state-of-the-art methods for few-input and single-input scenarios, and find that our method has a competetive advantage in both tasks.
+                        Finally, we demonstrate the wide applicability of our proposed model, creating 3D head avatars from images of different sources, smartphone captures, single images, and even out-of-domain inputs like antique busts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        <!--/ Abstract. -->
+
+        <!-- Paper video. -->
+<!--        <div class="columns is-centered has-text-centered">-->
+<!--            <div class="column is-four-fifths">-->
+<!--                <h2 class="title is-3">Video</h2>-->
+<!--                <div class="publication-video">-->
+<!--                    <iframe src="" frameborder="0"  &lt;!&ndash; TODO: Insert YouTube link &ndash;&gt;-->
+<!--                            allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!-- Generated samples -->
+<!--<section class="hero is-light">-->
+<!--    <div class="hero-body">-->
+<!--        <div class="container is-max-desktop">-->
+<!--            <h2 class="title is-3 has-text-centered">3D Head Generation on FFHQ-512</h2>-->
+<!--            <video id="gghead-samples" autoplay muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/mosaic_GGH-1077_0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15.mp4"-->
+<!--                        type="video/mp4">-->
+<!--            </video>-->
+<!--            <center><i>-->
+<!--                Uncurated samples from GGHead on FFHQ (seeds 0-15)-->
+<!--            </i></center>-->
+<!--        </div>-->
+
+<!--        <br />-->
+<!--        <br />-->
+<!--        <div class="container is-max-desktop">-->
+<!--            <h2 class="title is-3 has-text-centered">3D Head Generation on AFHQ-512</h2>-->
+<!--            <video id="gghead-samples" autoplay muted loop playsinline height="100%">-->
+<!--                <source src="./static/videos/mosaic_GGH-1225_6,7,8,9,10,11,12,13.mp4"-->
+<!--                        type="video/mp4">-->
+<!--            </video>-->
+<!--            <center><i>-->
+<!--                Curated samples from GGHead on AFHQ (seeds 6-13)-->
+<!--            </i></center>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--<section class="hero is-small">-->
+
+    <!-- Method -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+                    <img src="static/images/avat3r_method.jpg" width="100%"/>
+                    <div class="content has-text">
+                        <p>
+                            <strong>Avat<span class="logo-stripes">3</span>r</strong> follows the framework of Large Reconstruction Models (LRMs) to build a Vision Transformer that predicts a <em>pixel-aligned 3D Gaussian</em> for each pixel in the 4 input images.
+                            The final 3D representation is then simply the aggregation of all predicted 3D Gaussians:
+                        </p>
+                        <ol id="method-overview-list">
+                            <li>
+                                In addition to the 4 input images, we provide <em>3D position maps from DUSt3R</em> and
+                                <em>feature maps from Sapiens</em> to simplify the cross-view matching task
+                                of the subsequent Vision Transformer.
+                            </li>
+                            <li>
+                                All inputs are patchified into tokens and fed into the Vision Transfomer back-end
+                                where <em>dense self-attention</em> learns to infer 3D structure.
+                            </li>
+                            <li>
+                                To make the head <em>animatable</em>, we use <em>simple cross-attention layers</em> that attend to a
+                                short expression code sequence. The sequence is decoded from the provided expression
+                                code with a simple MLP. The expression code itself can be any descriptor of the
+                                state of a facial state such as an expression code from the FLAME face model.
+                            </li>
+                            <li>
+                                The resulting intermediate feature maps are decoded into Gaussian position, scale,
+                                rotation, color, and opactiy maps, and  then upsampled to the original input image resolution.
+                            </li>
+                            <li>
+                                Finally, we add <em>skip connections</em> to the predicted <em>position</em> and <em>color maps</em> which
+                                should further simplify the model's task.
+                            </li>
+                            <li>
+                                Gaussians that belong to pixels where <em>DUSt3R's confidence was larger</em>
+                                than a pre-defined threshold are collected
+                                and can be rendered from arbitrary viewpoints. This thresholding <em>naturally adapts the
+                                number of Gaussians</em> to the identity: People with a larger silhouette, e.g., due to
+                                voluminous hair, will be modelled with more Gaussians than a bald person.
+                            </li>
+                        </ol>
+                        <br />
+                        Due to the use of DUSt3R, Sapiens and dense self-attention, a full pass through the model is
+                        expensive. However, for animating the head, one can simply cache the activations until the
+                        first cross-attention layer since all previous network blocks are not expression-dependent.
+                        Doing so, results in ~8fps animation speed on a single RTX 3090 GPU.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Links -->
+    <section id="related-links" class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3 has-text-centered">Related Links</h2>
+                        <ul>
+                            <li><a href="https://justimyhxu.github.io/projects/grm/" target="_blank">GRM</a>: Our work builds on top of the Large Gaussian Reconstruction Model (GRM)</li>
+                            <li><a href="https://felixtaubner.github.io/cap4d/" target="_blank">CAP4D</a>: Concurrent work that solves the same task with a two-stage pipeline (multi-view image generation + Gaussian Avatar fitting)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title" style="text-align: center">BibTeX</h2>
+            <pre><code>@inproceedings{kirschstein2024gghead,
+    author = {Kirschstein, Tobias and Giebenhain, Simon and Tang, Jiapeng and Georgopoulos, Markos and Nie\ss{}ner, Matthias},
+    title = {{GGHead: Fast and Generalizable 3D Gaussian Heads}},
+    year = {2024},
+    isbn = {9798400711312},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3680528.3687686},
+    doi = {10.1145/3680528.3687686},
+    booktitle = {SIGGRAPH Asia 2024 Conference Papers},
+    articleno = {126},
+    numpages = {11},
+    keywords = {3D GAN, 3D head prior, 3D Gaussian Splatting},
+    series = {SA '24}
+}</code></pre>
+        </div>
+    </section>
+
+
+<!--    <section class="section" id="BibTeX">-->
+<!--        <div class="container is-max-desktop content">-->
+<!--            <h2 class="title" style="text-align: center">BibTeX</h2>-->
+<!--            <pre><code>TODO</code></pre>-->
+<!--        </div>-->
+<!--    </section>-->
+
+</body>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-full-width">
+                <div class="content has-text-centered">
+                    <p>
+                        Website inspired by <a href="https://keunhong.com/">Keunhong Park</a>'s <a
+                            href="https://nerfies.github.io/">Nerfies website</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+</html>

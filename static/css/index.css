@@ -78,6 +78,15 @@ span.ours-title {
     box-shadow: 0px 0px 7px #000 inset
 }
 
+#teaser-text {
+    font-size: 19px;
+    margin: 30px 0;
+}
+
+#section-abstract {
+    padding-top: 0;
+}
+
 #section-abstract .column {
     padding: 30px;
 }
@@ -91,30 +100,39 @@ span.ours-title {
 }
 
 
-/* Interpolation Video */
-
-
-
-.video-compare-container {
-    width: 63%;
-    margin: 0 auto;
-    position: relative;
-    display: block;
-    line-height: 0;
-}
-
-.videoMerge {
-    width: 100%;
-}
-/* Results Carousel */
-
-
-.carousel {
+#few-shot-results {
     overflow: hidden;
+    padding: 5px;
 }
 
-#results-container {
-    max-width: 450px;
+#few-shot-results .slider-item {
+    margin-right: 5px;
+    padding: 0 50px 20px 50px;
+}
+
+#few-shot-results .input-images {
+    display: inline-block;
+    margin-left: 16.6%;
+    width: 83.4%;
+    text-align: center;
+    color: rgb(94, 204, 243);
+}
+
+#few-shot-results .avat3rs {
+    font-size: 20px;
+    margin-top: -5px;
+    display: inline-block;
+    width: 83.4%;
+    text-align: center;
+}
+
+#few-shot-results .driver {
+    display: inline-block;
+    margin-top: -5px;
+    vertical-align: top;
+    width:15%;
+    text-align: center;
+    color: rgb(255, 128, 33);
 }
 
 ol#method-overview-list {

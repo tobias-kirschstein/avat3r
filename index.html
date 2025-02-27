@@ -24,7 +24,7 @@
             integrity="sha256-aSe2ZC5QeunlL/w/7PsVKmV+fa0eDbmybn/ptsKHR6I="
             crossorigin="anonymous"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
-    <script src="./static/js/bulma-carousel.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/bulma-slider.min.js"></script>
 <!--    <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>-->
     <script src="./static/js/interact.min.js"></script>
@@ -71,8 +71,8 @@
                 <div class="column has-text-centered">
                     <div class="publication-links">
                         <!-- PDF Link. -->
-                        <span class="link-block">  <!-- TODO: Add static pdf paper -->
-                                <a href="static/todo.pdf"
+                        <span class="link-block">
+                                <a href="static/Avat3r_paper.pdf"
                                    target="_blank"
                                    class="external-link button is-normal is-rounded is-dark">
                                   <span class="icon">
@@ -93,7 +93,7 @@
                             </span>
                         <!-- Video Link. --> <!-- TODO: Add video link -->
                         <span class="link-block">
-                                <a href="" target="_blank"
+                                <a href="https://youtu.be/P3zNVx15gYs" target="_blank"
                                    class="external-link button is-normal is-rounded is-dark">
                                   <span class="icon">
                                       <!-- "fas" means fa-brand -->
@@ -124,8 +124,8 @@
 <section class="hero teaser" id="section-interpolation">
     <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered" style="margin-bottom:0; margin-top: 1px">
-            <div class="column">
-                <p style="margin: 30px 0">
+            <div class="column" id="teaser-text">
+                <p>
                     <strong>Avat<span class="logo-stripes">3</span>r</strong> takes <em>4 input images</em> of a person's face and generates an <em>animatable 3D head avatar</em> in a <em>single forward pass</em>.
                     The resulting 3D head representation can be animated at interactive rates.
                     The entire creation process of the 3D avatar, from taking 4 smartphone pictures to the final result, can be executed <em>within minutes</em>.
@@ -172,46 +172,15 @@
         <!--/ Abstract. -->
 
         <!-- Paper video. -->
-<!--        <div class="columns is-centered has-text-centered">-->
-<!--            <div class="column is-four-fifths">-->
-<!--                <h2 class="title is-3">Video</h2>-->
-<!--                <div class="publication-video">-->
-<!--                    <iframe src="" frameborder="0"  &lt;!&ndash; TODO: Insert YouTube link &ndash;&gt;-->
-<!--                            allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!-- Generated samples -->
-<!--<section class="hero is-light">-->
-<!--    <div class="hero-body">-->
-<!--        <div class="container is-max-desktop">-->
-<!--            <h2 class="title is-3 has-text-centered">3D Head Generation on FFHQ-512</h2>-->
-<!--            <video id="gghead-samples" autoplay muted loop playsinline height="100%">-->
-<!--                <source src="./static/videos/mosaic_GGH-1077_0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15.mp4"-->
-<!--                        type="video/mp4">-->
-<!--            </video>-->
-<!--            <center><i>-->
-<!--                Uncurated samples from GGHead on FFHQ (seeds 0-15)-->
-<!--            </i></center>-->
-<!--        </div>-->
-
-<!--        <br />-->
-<!--        <br />-->
-<!--        <div class="container is-max-desktop">-->
-<!--            <h2 class="title is-3 has-text-centered">3D Head Generation on AFHQ-512</h2>-->
-<!--            <video id="gghead-samples" autoplay muted loop playsinline height="100%">-->
-<!--                <source src="./static/videos/mosaic_GGH-1225_6,7,8,9,10,11,12,13.mp4"-->
-<!--                        type="video/mp4">-->
-<!--            </video>-->
-<!--            <center><i>-->
-<!--                Curated samples from GGHead on AFHQ (seeds 6-13)-->
-<!--            </i></center>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-
-<!--<section class="hero is-small">-->
+<section class="section">
+    <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Video</h2>
+        <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/P3zNVx15gYs" frameborder="0"
+                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
 
     <!-- Method -->
     <section class="section">
@@ -268,6 +237,84 @@
         </div>
     </section>
 
+    <!-- Avatar result videos-->
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div id="few-shot-results" class="container">
+                <h2 class="title is-3 has-text-centered">Few-shot Results</h2>
+                <div id="few-shot-results-carousel" class="carousel few-shot-results-carousel">
+                    <div class="item">
+                        <span class="input-images">Input images</span>
+                        <video autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/4_shot_results/driver-APP152_wInput_2.mp4"
+                                    type="video/mp4">
+                        </video>
+                        <span class="driver">Driver</span>
+                        <span class="avat3rs"><strong>Avat<span class="logo-stripes">3</span>rs</strong></span>
+                    </div>
+                    <div class="item">
+                        <span class="input-images">Input images</span>
+                        <video controls muted loop playsinline height="100%">
+                            <source src="./static/videos/4_shot_results/driver-APP152_wInput.mp4"
+                                    type="video/mp4">
+                        </video>
+                        <span class="driver">Driver</span>
+                        <span class="avat3rs"><strong>Avat<span class="logo-stripes">3</span>rs</strong></span>
+                    </div>
+                    <div class="item">
+                        <span class="input-images">Input images</span>
+                        <video controls muted loop playsinline height="100%">
+                            <source src="./static/videos/4_shot_results/driver-BGR645_wInput_2.mp4"
+                                    type="video/mp4">
+                        </video>
+                        <span class="driver">Driver</span>
+                        <span class="avat3rs"><strong>Avat<span class="logo-stripes">3</span>rs</strong></span>
+                    </div>
+                    <div class="item">
+                        <span class="input-images">Input images</span>
+                        <video controls muted loop playsinline height="100%">
+                            <source src="./static/videos/4_shot_results/driver-BGR645_wInput.mp4"
+                                    type="video/mp4">
+                        </video>
+                        <span class="driver">Driver</span>
+                        <span class="avat3rs"><strong>Avat<span class="logo-stripes">3</span>rs</strong></span>
+                    </div>
+                </div>
+<!--                <p align="center" style="margin-top:10px">-->
+<!--                    Animated <strong><span class="logo-text">Diffusion</span>Avatars</strong>-->
+<!--                </p>-->
+            </div>
+        </div>
+    </section>
+
+<!--    <section class="section" id="four-shot-results">-->
+<!--        <div class="container is-max-desktop">-->
+<!--            <h2 class="title is-3 has-text-centered">Few-shot Results</h2>-->
+<!--            <div>-->
+<!--                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">-->
+<!--                    <source src="static/videos/4_shot_results/driver-APP152_wInput_2.mp4" type="video/mp4">-->
+<!--                    </source>-->
+<!--                </video>-->
+<!--                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">-->
+<!--                    <source src="static/videos/4_shot_results/driver-APP152_wInput.mp4" type="video/mp4">-->
+<!--                    </source>-->
+<!--                </video>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+    <section class="section" id="single-view-applications">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Single-view Applications of <strong>Avat<span class="logo-stripes">3</span>r</strong></h2>
+            <div>
+                <video class="video lazy" loop playsinline autoplay muted onplay="resizeAndPlay(this)">
+                    <source src="static/videos/website_single_view_applications_compressed.mp4" type="video/mp4">
+                    </source>
+                </video>
+            </div>
+        </div>
+    </section>
+
     <!-- Related Links -->
     <section id="related-links" class="hero">
         <div class="hero-body">
@@ -285,34 +332,14 @@
         </div>
     </section>
 
+    <!-- TODO: Insert arXiv citation -->
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
             <h2 class="title" style="text-align: center">BibTeX</h2>
-            <pre><code>@inproceedings{kirschstein2024gghead,
-    author = {Kirschstein, Tobias and Giebenhain, Simon and Tang, Jiapeng and Georgopoulos, Markos and Nie\ss{}ner, Matthias},
-    title = {{GGHead: Fast and Generalizable 3D Gaussian Heads}},
-    year = {2024},
-    isbn = {9798400711312},
-    publisher = {Association for Computing Machinery},
-    address = {New York, NY, USA},
-    url = {https://doi.org/10.1145/3680528.3687686},
-    doi = {10.1145/3680528.3687686},
-    booktitle = {SIGGRAPH Asia 2024 Conference Papers},
-    articleno = {126},
-    numpages = {11},
-    keywords = {3D GAN, 3D head prior, 3D Gaussian Splatting},
-    series = {SA '24}
-}</code></pre>
+            <pre><code></code></pre>
         </div>
     </section>
 
-
-<!--    <section class="section" id="BibTeX">-->
-<!--        <div class="container is-max-desktop content">-->
-<!--            <h2 class="title" style="text-align: center">BibTeX</h2>-->
-<!--            <pre><code>TODO</code></pre>-->
-<!--        </div>-->
-<!--    </section>-->
 
 </body>
 

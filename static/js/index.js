@@ -1,12 +1,14 @@
 $(document).ready(function () {
 
-    var carousels = bulmaCarousel.attach('#results-carousel', {
+    var carouselId = "#few-shot-results-carousel"
+
+    var carousels = bulmaCarousel.attach(carouselId, {
         slidesToScroll: 1,
         slidesToShow: 1,
         loop: true,
-        infinite: true,
+        // infinite: true,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 50000,
     });
 
     // Start playing next video in carousel and pause previous video to limit load on browser
@@ -14,32 +16,8 @@ $(document).ready(function () {
         // Add listener to  event
         carousels[i].on('before:show', state => {
             var nextId = (state.next + state.length) % state.length;  // state.next can be -1 or larger than the number of videos
-            var nextVideoElement = $("#results-carousel .slider-item[data-slider-index='" + nextId + "'] video")[0];
-            var previousVideoElement = $("#results-carousel .slider-item[data-slider-index='" + state.index + "'] video")[0];
-
-            previousVideoElement.pause();
-            previousVideoElement.currentTime = 0;
-            nextVideoElement.currentTime = 0;
-            nextVideoElement.play();
-        });
-    }
-
-    var reenactmentsCarousels = bulmaCarousel.attach('#reenactments-carousel', {
-        slidesToScroll: 1,
-        slidesToShow: 1,
-        loop: true,
-        infinite: true,
-        autoplay: true,
-        autoplaySpeed: 5000,
-    });
-
-    // Start playing next video in carousel and pause previous video to limit load on browser
-    for (var i = 0; i < reenactmentsCarousels.length; i++) {
-        // Add listener to  event
-        reenactmentsCarousels[i].on('before:show', state => {
-            var nextId = (state.next + state.length) % state.length;  // state.next can be -1 or larger than the number of videos
-            var nextVideoElement = $("#reenactments-carousel .slider-item[data-slider-index='" + nextId + "'] video")[0];
-            var previousVideoElement = $("#reenactments-carousel .slider-item[data-slider-index='" + state.index + "'] video")[0];
+            var nextVideoElement = $(carouselId + " .slider-item[data-slider-index='" + nextId + "'] video")[0];
+            var previousVideoElement = $(carouselId + " .slider-item[data-slider-index='" + state.index + "'] video")[0];
 
             previousVideoElement.pause();
             previousVideoElement.currentTime = 0;
@@ -120,23 +98,23 @@ function resizeAndPlay(element) {
     playVids(element.id);
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    var videoMerge = document.getElementById('geo1Merge');
-    var arrowIcon = document.getElementById('dragArrow');
-
-    if (videoMerge && arrowIcon) {
-        var hasInteracted = false; // Flag to check if the user has interacted
-
-        function hideArrowOnInteraction() {
-            if (!hasInteracted) {
-                arrowIcon.style.opacity = 0;
-                hasInteracted = true; // Set the flag to true after first interaction
-            }
-        }
-
-        videoMerge.addEventListener('mousemove', hideArrowOnInteraction);
-        videoMerge.addEventListener('touchmove', hideArrowOnInteraction);
-    } else {
-        console.error('Required elements not found');
-    }
-});
+// document.addEventListener('DOMContentLoaded', (event) => {
+//     var videoMerge = document.getElementById('geo1Merge');
+//     var arrowIcon = document.getElementById('dragArrow');
+//
+//     if (videoMerge && arrowIcon) {
+//         var hasInteracted = false; // Flag to check if the user has interacted
+//
+//         function hideArrowOnInteraction() {
+//             if (!hasInteracted) {
+//                 arrowIcon.style.opacity = 0;
+//                 hasInteracted = true; // Set the flag to true after first interaction
+//             }
+//         }
+//
+//         videoMerge.addEventListener('mousemove', hideArrowOnInteraction);
+//         videoMerge.addEventListener('touchmove', hideArrowOnInteraction);
+//     } else {
+//         console.error('Required elements not found');
+//     }
+// });
